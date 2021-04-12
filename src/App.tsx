@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Switch, NavLink } from 'react-router-dom';
 import './App.scss';
 import Market from './views/Market';
-import PianoView from './views/Piano';
+import PianoView from './views/PianoView';
 
 function App() {
   return (
