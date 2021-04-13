@@ -22,10 +22,15 @@ const DURATION_UNIT = 0.5;
 const DEFAULT_NOTE_DURATION = DURATION_UNIT;
 
 interface Props {
-
+    mode: string,
+    events: any[],
+    currentTime: number,
+    currentEvents: any[],
+    setEvents: (events: any[]) => void,
+    setCurrentTime: (time: number) => void
 }
 
-const PianoView = () => {
+const PianoView = (props: Props) => {
     const [hasNotesRecorded, setHasNotesRecorded] = useState(false)
     const [noteDuration, setNoteDuration] = useState(DEFAULT_NOTE_DURATION)
     const onPlayNoteInput = () => {
@@ -41,25 +46,22 @@ const PianoView = () => {
     };
 
     const recordNotes = (midiNumbers: any, duration: any) => {
-        if (this.props.recording.mode !== 'RECORDING') {
+        if (props.mode !== 'RECORDING') {
             return;
         }
-        const newEvents = midiNumbers.map(midiNumber => {
+        const newEvents = midiNumbers.map((midiNumber: number) => {
             return {
                 midiNumber,
-                time: this.props.recording.currentTime,
+                time: props.currentTime,
                 duration: duration,
             };
         });
-        this.props.setRecording({
-            events: this.props.recording.events.concat(newEvents),
-            currentTime: this.props.recording.currentTime + duration,
-        });
+        props.setEvents(props.events.concat(newEvents))
+        props.setCurrentTime(props.currentTime + duration)
     };
 
     return (
         <div className={styles.container}>
-            <Piano></Piano>
             <DimensionsProvider>
                 {({ containerWidth }: { containerWidth: any, containerHeight: any }) => (
                     <SoundfontProvider
