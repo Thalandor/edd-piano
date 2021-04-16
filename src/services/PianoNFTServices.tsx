@@ -19,9 +19,7 @@ export const getOwnedPieces = async () => {
     );
     const accounts = await web3.eth.getAccounts();
 
-    let pieces: Piece[] = await nftContract.methods
-      .getOwnedPieces()
-      .call({ from: accounts[0] });
+    let pieces: Piece[] = []; // Put here the call!
     pieces = pieces.map((p) => {
       return { ...p, ethPrice: web3.utils.fromWei(p.price, "ether") };
     });
@@ -37,7 +35,7 @@ export const getAllPieces = async () => {
       SongContractABI,
       SongContractAddress
     );
-    let pieces: Piece[] = await nftContract.methods.getAllPieces().call();
+    let pieces: Piece[] = []; // Put here the call!!!
     const ownedPieces = await getOwnedPieces();
     pieces = pieces.map((p) => {
       return { ...p, ethPrice: web3.utils.fromWei(p.price, "ether") };
@@ -72,12 +70,7 @@ export const buyPiece = async (tokenId: string, price: number) => {
     const gasEstimate = await nftContract.methods
       .buyPiece(tokenId)
       .estimateGas({ from: currentAccount, value: price });
-    await nftContract.methods.buyPiece(tokenId).send({
-      from: currentAccount,
-      gasPrice: gasPrice,
-      gas: gasEstimate,
-      value: price,
-    });
+    // Put under here the buyPiece call
   }
 };
 
@@ -96,13 +89,10 @@ export const createPiece = async (
     const currentAccount = accounts[0];
     const gasPrice = await web3.eth.getGasPrice();
     const price = web3.utils.toWei(value.toString(), "ether");
-
     const gasEstimate = await nftContract.methods
       .createPiece(title, piece, price)
       .estimateGas({ from: currentAccount });
-    await nftContract.methods
-      .createPiece(title, piece, price)
-      .send({ from: currentAccount, gasPrice: gasPrice, gas: gasEstimate });
+    // Put here the createPiece call!
   }
 };
 
@@ -113,16 +103,7 @@ export const subscribeNewPieces = async (handler: Function) => {
       SongContractABI,
       SongContractAddress
     );
-    let subscription = await nftContract.events.PieceCreated(
-      { fromBlock: "latest" },
-      (t: any, events: any) => {
-        let piece: Piece = {
-          ...events.returnValues,
-          ethPrice: web3.utils.fromWei(events.returnValues.price, "ether"),
-        };
-        handler(piece);
-      }
-    );
+    let subscription = null; // Put your code here!
     return subscription;
   }
 };
@@ -136,12 +117,7 @@ export const subscribeBoughtPieces = async (handler: Function) => {
     );
     const accounts = await web3.eth.getAccounts();
     const currentAccount = accounts[0];
-    let subscription = await nftContract.events.PieceBought(
-      { fromBlock: "latest", filter: { newOwner: [currentAccount] } },
-      (t: any, events: any) => {
-        handler();
-      }
-    );
+    let subscription = null;
     return subscription;
   }
 };
