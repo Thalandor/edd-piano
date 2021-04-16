@@ -35,7 +35,7 @@ interface Props {
 
 const PianoView = (props: Props) => {
   const [hasNotesRecorded, setHasNotesRecorded] = useState(false);
-  const [noteDuration, setNoteDuration] = useState(DEFAULT_NOTE_DURATION);
+  const [noteDuration] = useState(DEFAULT_NOTE_DURATION);
   const onPlayNoteInput = () => {
     setHasNotesRecorded(false);
   };

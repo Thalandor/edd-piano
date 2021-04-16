@@ -1,15 +1,10 @@
 import { Space, Table } from "antd";
 import Column from "antd/lib/table/Column";
 import React, { useEffect, useState } from "react";
-import {
-  Piece,
-  getAllPieces,
-  buyPiece,
-  getCurrentAddress,
-} from "../services/PianoNFTServices";
+import { Piece, getAllPieces, buyPiece } from "../services/PianoNFTServices";
 
 import _ from "lodash";
-import { Piano, MidiNumbers, KeyboardShortcuts } from "react-piano";
+import { Piano, MidiNumbers } from "react-piano";
 import SoundfontProvider from "../components/SoundfontProvider";
 import { PlayCircleFilled, DollarCircleFilled } from "@ant-design/icons";
 
