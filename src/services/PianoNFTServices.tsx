@@ -91,11 +91,13 @@ export const createPiece = async (
     const accounts = await web3.eth.getAccounts();
     const currentAccount = accounts[0];
     const gasPrice = await web3.eth.getGasPrice();
+    const price = web3.utils.toWei(value.toString(), "ether");
+
     const gasEstimate = await nftContract.methods
-      .createPiece(title, piece, value)
+      .createPiece(title, piece, price)
       .estimateGas({ from: currentAccount });
     await nftContract.methods
-      .createPiece(title, piece, value)
+      .createPiece(title, piece, price)
       .send({ from: currentAccount, gasPrice: gasPrice, gas: gasEstimate });
   }
 };

@@ -11,3 +11,15 @@
     }
   }
 }
+
+:global(.ant-modal-body) {
+  .modalContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    .inputModal {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

@@ -135,14 +135,22 @@ const PianoView = () => {
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <Input
-          type="text"
-          onChange={(v) => setFieldValue("title", v.target.value)}
-        ></Input>
-        <Input
-          type="number"
-          onChange={(v) => setFieldValue("price", v.target.value)}
-        ></Input>
+        <div className={styles.modalContainer}>
+          <div className={styles.inputModal}>
+            <span>Title</span>
+            <Input
+              type="text"
+              onChange={(v) => setFieldValue("title", v.target.value)}
+            ></Input>
+          </div>
+          <div className={styles.inputModal}>
+            <span>Price in ETH</span>
+            <Input
+              type="number"
+              onChange={(v) => setFieldValue("price", v.target.value)}
+            ></Input>
+          </div>
+        </div>
       </Modal>
     </div>
   );

@@ -83,7 +83,10 @@ const Market = () => {
           key="action"
           render={(text, record: any) => (
             <Space size="middle">
-              <PlayCircleFilled onClick={() => onPlayHandler(record.piece)} />
+              <PlayCircleFilled
+                onClick={() => onPlayHandler(record.piece)}
+                style={{ fontSize: 25 }}
+              />
             </Space>
           )}
         />

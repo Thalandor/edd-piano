@@ -101,8 +101,12 @@ const Market = () => {
             <Space size="middle">
               <DollarCircleFilled
                 onClick={() => onBuyHandler(record.tokenId, record.price)}
+                style={{ fontSize: 25 }}
               />
-              <PlayCircleFilled onClick={() => onPlayHandler(record.piece)} />
+              <PlayCircleFilled
+                onClick={() => onPlayHandler(record.piece)}
+                style={{ fontSize: 25 }}
+              />
             </Space>
           )}
         />
