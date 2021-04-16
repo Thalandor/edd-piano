@@ -1,0 +1,13 @@
+.container {
+  flex: 1;
+  .pianoContainer {
+  }
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      width: 150px;
+    }
+  }
+}
