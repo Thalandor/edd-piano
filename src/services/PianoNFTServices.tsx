@@ -45,7 +45,6 @@ export const getAllPieces = async () => {
     pieces = pieces.filter(
       (p) => !ownedPieces.some((ow) => ow.tokenId === p.tokenId)
     );
-    debugger;
     return pieces;
   }
   return [];

@@ -18,6 +18,7 @@ To make the application work write the next commands:
 
 Read all the pieces on the market to know which one interests you.
 
+- The documentation you need is here: https://web3js.readthedocs.io/en/v1.3.4/web3-eth-contract.html#methods-mymethod-call
 - Go to the file PianoNFTServices.tsx
 - Complete the 'getAllPieces' method
 - If everything went well you should already have some pieces there!
@@ -26,6 +27,7 @@ Read all the pieces on the market to know which one interests you.
 
 Store your musical piece on the blockchain to sell it!
 
+- The documentation you need is here: https://web3js.readthedocs.io/en/v1.3.4/web3-eth-contract.html#methods-mymethod-send
 - Go to the file PianoNFTServices.tsx
 - Complete the 'createPiece' method.
 - Try to create your new piece of art!
@@ -36,6 +38,7 @@ Store your musical piece on the blockchain to sell it!
 
 Subscribe to an event to know when there is new information on the blockchain.
 
+- The documentation you specifically need is here: https://web3js.readthedocs.io/en/v1.3.4/web3-eth-contract.html#contract-events
 - Go to the file PianoNFTServices.tsx
 - Complete the 'subscribeNewPieces' method.
 - Create a new piece.
