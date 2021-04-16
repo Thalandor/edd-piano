@@ -18,6 +18,7 @@ contract PianoNFT is ERC721Enumerable {
     Piece[] public pieces ;
 
     event PieceCreated(string title, address indexed composer, string piece, uint256 price, uint tokenId, address author);
+    event PieceBought(address indexed composer, string title, uint tokenId);
     
     constructor ()  ERC721("PianoNFT", "PNFT")   
     {
@@ -41,6 +42,7 @@ contract PianoNFT is ERC721Enumerable {
         super._transfer(owner, msg.sender, tokenId);
         bool sent = payable(owner).send(msg.value);
         require(sent, "Failed to send Ether");
+        emit PieceBought(msg.sender, tokenPiece[tokenId].title, tokenPiece[tokenId].price);
     }
     
     function getOwnedPieces() public view returns(Piece[] memory) {

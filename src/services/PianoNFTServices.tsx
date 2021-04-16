@@ -38,9 +38,14 @@ export const getAllPieces = async () => {
       SongContractAddress
     );
     let pieces: Piece[] = await nftContract.methods.getAllPieces().call();
+    const ownedPieces = await getOwnedPieces();
     pieces = pieces.map((p) => {
       return { ...p, ethPrice: web3.utils.fromWei(p.price, "ether") };
     });
+    pieces = pieces.filter(
+      (p) => !ownedPieces.some((ow) => ow.tokenId === p.tokenId)
+    );
+    debugger;
     return pieces;
   }
   return [];
@@ -117,6 +122,25 @@ export const subscribeNewPieces = async (handler: Function) => {
           ethPrice: web3.utils.fromWei(events.returnValues.price, "ether"),
         };
         handler(piece);
+      }
+    );
+    return subscription;
+  }
+};
+
+export const subscribeBoughtPieces = async (handler: Function) => {
+  const web3 = await initWeb3();
+  if (web3) {
+    const nftContract = new web3.eth.Contract(
+      SongContractABI,
+      SongContractAddress
+    );
+    const accounts = await web3.eth.getAccounts();
+    const currentAccount = accounts[0];
+    let subscription = await nftContract.events.PieceBought(
+      { fromBlock: "latest", filter: { newOwner: [currentAccount] } },
+      (t: any, events: any) => {
+        handler();
       }
     );
     return subscription;

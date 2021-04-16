@@ -30,9 +30,7 @@ const Market = () => {
 
   const fetchData = async () => {
     const allPieces = await getAllPieces();
-    const currentAddress = await getCurrentAddress();
-    let filteredPieces = allPieces.filter((p) => p.author !== currentAddress);
-    setPieces(filteredPieces);
+    setPieces(allPieces);
   };
 
   const dataSource = pieces.map((p: Piece, index: number) => {

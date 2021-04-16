@@ -60,6 +60,31 @@ export const SongContractABI: AbiItem[] = [
     anonymous: false,
     inputs: [
       {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "title",
+        type: "string",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "price",
+        type: "uint256",
+      },
+    ],
+    name: "PieceBought",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: false,
         internalType: "string",
         name: "title",
@@ -591,5 +616,4 @@ export const SongContractABI: AbiItem[] = [
     type: "function",
   },
 ];
-
-export const SongContractAddress = "0x132De2de889Cbb93AC1db163624d5F8eA897f6Da";
+export const SongContractAddress = "0xE0C6988c232697d8c043E0DCA27Ac5BEdE975533";
