@@ -1,14 +1,12 @@
+@import "~antd/dist/antd.css";
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 
-  header{
-    height: 100px;
-    background-color: red;
-    color: white;
+  .mainView {
+    padding: 32px;
   }
 }
-
